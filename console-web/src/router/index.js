@@ -10,10 +10,23 @@ const router = createRouter({
       component: HomeVIew,
     },
     {
-      path: '/login',
-      name: 'login',
+      path: '/user',
+      name: 'user',
       component: () => import('@/views/user/LoginView.vue'),
+      children: [
+        {
+          path: 'login',
+          name: 'login',
+          component: () => import('@/views/user/components/LoginForm.vue'),
+        },
+        {
+          path: 'register',
+          name: 'register',
+          component: () => import('@/views/user/components/RegisterForm.vue'),
+        }
+      ]
     },
+
     // {
     //   path: '/:pathMatch(.*)*',
     //   name: 'NotFound',
